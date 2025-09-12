@@ -4,7 +4,17 @@ if(!NGA){
    $done()
    return
 }
-const {cookie, contentType, userAgent, body} = JSON.parse(NGA)
+let parsed;
+try{
+  parsed = JSON.parse(NGA);
+}catch(e){
+  $done()
+}
+
+const cookie = parsed.cookie;
+const contentType = parsed.contentType;
+const userAgent = parsed.userAgent;
+const body = parsed.body;
 
 !(async () => {
     await checkin();
