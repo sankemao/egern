@@ -1,5 +1,5 @@
 [Script]
-[NGA]签到 = type=http-response, pattern=^https?:\/\/.*ngabbs\.com, script-path=http://192.168.20.237:5500/nga.js, requires-body=true, timeout=60
+[NGA]签到 = type=http-response, pattern=.*ngabbs\.com, script-path=http://192.168.20.237:5500/nga.js, requires-body=true, timeout=60
 
 [MITM]
 hostname = %APPEND% *.ngabbs.com
