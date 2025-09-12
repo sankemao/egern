@@ -1,0 +1,2 @@
+$notification.post("test");
+$done();
