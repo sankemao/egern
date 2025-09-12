@@ -1,4 +1,4 @@
 [Script]
-[NGA]签到 = type=http-response, pattern=^https:\/\/ngabbs.com\/nuke.php\??, script-path=http://192.168.20.237:5500/nga.js, requires-body=true
+[NGA]签到 = type=http-request, pattern=^https:\/\/ngabbs.com\/nuke.php\??, script-path=http://192.168.20.237:5500/nga.js, requires-body=true
 [MITM]
 hostname = %APPEND% ngabbs.com
