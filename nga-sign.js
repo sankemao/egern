@@ -1,14 +1,12 @@
 const NGA = $persistentStore.read("NGA");
-const cookie = NGA.cookie;
-const contentType = NGA.contentType;
-const userAgent = NGA.userAgent;
-const body = NGA.body;
+if(!NGA){
+   $notification("NGA", "未获取cookie, 请先进入签到页面一次"); 
+   $done()
+   return
+}
+const {cookie, contentType, userAgent, body} = JSON.parse(NGA)
 
-if (!cookie || !contentType || !userAgent || !body) {
-  $notification("NGA", "未获取cookie, 请先进入签到页面一次");
-  $done();
-} else {
-  !(async () => {
+!(async () => {
     await checkin();
     const mids = await missions();
     for (const mid of mids) {
@@ -17,10 +15,9 @@ if (!cookie || !contentType || !userAgent || !body) {
   })()
     .catch((e) => console.log(e))
     .finally(() => $done());
-}
 
 function checkin() {
-  const newBody = { ...JSON.parse(body) };
+  const newBody = { ...body };
   newBody["__lib"] = "check_in";
   newBody["__act"] = "check_in";
   const promise = new Promise((resolve) => {
@@ -66,7 +63,7 @@ function checkin() {
 
 function missions() {
   const promise = new Promise((resolve) => {
-    const newBody = { ...JSON.parse(body) };
+    const newBody = { ...body };
     newBody["__lib"] = "mission";
     newBody["__act"] = "get_default";
     newBody["get_success_repeat"] = "1";
@@ -101,7 +98,7 @@ function missions() {
 
 function checkInCountAdd(mid) {
   const promise = new Promise((resolve) => {
-    const newBody = { ...JSON.parse(body) };
+    const newBody = { ...body };
     newBody["__lib"] = "mission";
     newBody["__act"] = "checkin_count_add";
     newBody["no_compatible_fix"] = "1";

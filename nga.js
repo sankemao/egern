@@ -16,7 +16,7 @@
         }),
         "NGA"
       );
-      $notification.post("获取NGA cookie", "成功");
+      $notification.post("NGA COOKIE", "获取成功");
     }
   }
 })()
