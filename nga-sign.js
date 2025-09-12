@@ -7,7 +7,7 @@ let parsed;
 try{
   parsed = JSON.parse(NGA);
 }catch(e){
-  $done()
+  $done();
 }
 
 const cookie = parsed.cookie;
