@@ -1,8 +1,7 @@
 const NGA = $persistentStore.read("NGA");
 if(!NGA){
-   $notification("NGA", "未获取cookie, 请先进入签到页面一次"); 
-   $done()
-   return
+   $notification.post("NGA", "未获取cookie, 请先进入签到页面一次"); 
+   $done();
 }
 let parsed;
 try{
