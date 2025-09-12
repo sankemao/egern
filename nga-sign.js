@@ -10,10 +10,7 @@ try{
   $done();
 }
 
-const cookie = parsed.cookie;
-const contentType = parsed.contentType;
-const userAgent = parsed.userAgent;
-const body = parsed.body;
+const {cookie, contentType, userAgent, body} = parsed;
 
 !(async () => {
     await checkin();
